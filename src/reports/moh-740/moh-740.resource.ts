@@ -12,7 +12,8 @@ import {
 const baseMoh740Url = 'moh-740-report';
 
 export async function fetchMoh740Report(params: Moh740Dto): Promise<Moh740Data | null> {
-  const etlBaseUrl = await getEtlBaseUrl();
+  // const etlBaseUrl = await getEtlBaseUrl();
+  const etlBaseUrl = 'http://0.0.0.0:8002';
   const moh740Url = `${etlBaseUrl}/${baseMoh740Url}?endDate=${params.endDate}&locationUuids=${params.locationUuid}`;
   const resp = await openmrsFetch(moh740Url);
 
@@ -29,7 +30,8 @@ export async function fetchMoh740Report(params: Moh740Dto): Promise<Moh740Data |
 }
 
 export async function fetchMoh740Register(params: Moh740RegisterDto): Promise<Moh270Patient[]> {
-  const etlBaseUrl = await getEtlBaseUrl();
+  // const etlBaseUrlOld = await getEtlBaseUrl();
+  const etlBaseUrl = 'http://0.0.0.0:8002';
   const p = {
     endDate: params.endDate,
     indicators: params.indicators,
